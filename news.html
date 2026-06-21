@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Shelter Academy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .news-container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .news-item { border-left: 4px solid #007bff; padding: 20px; margin-bottom: 20px; background:#f8f9fa; border-radius:4px; }
+        .news-date { color:#666; font-size:0.9em; margin-bottom:8px; }
+        .news-title { font-size:1.4em; font-weight:700; margin-bottom:8px; color:#333; }
+        .news-content { color:#444; line-height:1.6; }
+        .recommendations { background:#fff; border:1px solid #e9ecef; padding:16px; border-radius:6px; }
+        .recommendations h3 { margin-top:0; }
+        nav .nav-menu .nav-item.active > .nav-link { font-weight:700; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Shelter <span>Academy</span></a>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Academy &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="academy/governance.html" class="dropdown-item">Governance</a></li>
+                            <li><a href="academy/risk-assessment.html" class="dropdown-item">Risk Assessment</a></li>
+                            <li><a href="academy/risk-response-reporting.html" class="dropdown-item">Risk Response & Reporting</a></li>
+                            <li><a href="academy/technology-security.html" class="dropdown-item">Technology & Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                    <li class="nav-item active"><a href="news.html" class="nav-link">News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="news-container">
+        <h1>Latest News</h1>
+
+        <div class="news-item">
+            <div class="news-date">June 21, 2026</div>
+            <div class="news-title">Welcome to the new News page</div>
+            <div class="news-content">We're launching a dedicated News page so you can find updates, recommendations, and announcements in one place. Check back regularly for new posts.</div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">June 20, 2026</div>
+            <div class="news-title">Site navigation updated</div>
+            <div class="news-content">We've added a News link in the main navigation so you can access this page from anywhere on the site.</div>
+        </div>
+
+        <section style="margin-top:2rem;">
+            <h2>Key recommendations</h2>
+            <div class="recommendations">
+                <h3>1. Update navigation</h3>
+                <p>Add a persistent "News" link to the primary navigation (done) so visitors can quickly find announcements.</p>
+
+                <h3>2. Centralize styling</h3>
+                <p>Move shared styles into <code>css/style.css</code> so the News page matches the rest of the site and is easy to maintain.</p>
+
+                <h3>3. Use consistent structure for posts</h3>
+                <p>Each news post should include a date, title, and content block. That makes it easy to add, parse, or migrate posts later.</p>
+
+                <h3>4. Keep content in HTML for now</h3>
+                <p>Since the site is primarily HTML, adding posts directly to this file is simple. If you later want dynamic posting, consider integrating a simple backend or a headless CMS.</p>
+
+                <h3>5. Accessibility & metadata</h3>
+                <p>Include semantic tags (e.g., <code>&lt;article&gt;</code>), appropriate headings, and descriptive link text. Add meta descriptions if posts will be shared externally.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Shelter Academy</h3>
+                <p>Advancing enterprise cybersecurity capabilities through robust structural awareness and risk framework alignment.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Domains</h4>
+                <ul>
+                    <li><a href="academy/governance.html">Governance</a></li>
+                    <li><a href="academy/risk-assessment.html">Risk Assessment</a></li>
+                    <li><a href="academy/risk-response-reporting.html">Risk Response & Reporting</a></li>
+                    <li><a href="academy/technology-security.html">Technology & Security</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shelter Academy. Designed for Enterprise Security Competency.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
