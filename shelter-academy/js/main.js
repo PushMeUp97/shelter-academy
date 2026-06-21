@@ -2,21 +2,20 @@
  * Shelter Academy - Global UI Interaction Layer
  */
 document.addEventListener('DOMContentLoaded', () => {
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-
-    if (dropdownToggle && dropdownMenu) {
-        // Handle explicit click triggers on the Dropdown Item
-        dropdownToggle.addEventListener('click', (event) => {
-            event.preventDefault(); // Halt standard relative reference jump
-            dropdownMenu.classList.toggle('show');
+    // Toggle dropdown menus
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        const li = toggle.closest('.dropdown');
+        const menu = li ? li.querySelector('.dropdown-menu') : null;
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (menu) menu.classList.toggle('open');
         });
+    });
 
-        // Global dismiss interaction when clicking outer elements
-        document.addEventListener('click', (event) => {
-            if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.remove('show');
-            }
-        });
-    }
+    // Close dropdowns on outside click
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-menu.open').forEach(m => m.classList.remove('open'));
+        }
+    });
 });

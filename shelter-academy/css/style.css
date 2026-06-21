@@ -112,6 +112,7 @@ hr {
 }
 
 .dropdown-menu {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -130,6 +131,7 @@ hr {
 }
 
 .dropdown-menu.show {
+    display: block;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
