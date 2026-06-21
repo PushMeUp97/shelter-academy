@@ -1,222 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shelter Academy — Governance & Risk Training for Shelter Organizations</title>
-  <meta name="description" content="Shelter Academy is a free, self-paced training library covering governance, risk assessment, incident response, and technology security for shelter-running organizations.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Shelter Academy</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">SA</span>
-        <span class="brand-text">Shelter<br>Academy</span>
-      </a>
-      <nav class="site-nav" id="siteNav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="has-dropdown">
-            <button class="dropdown-toggle" aria-expanded="false" aria-controls="academyMenu">
-              Academy <span class="caret">▾</span>
-            </button>
-            <ul class="dropdown-menu" id="academyMenu">
-              <li><a href="academy/governance.html"><span class="mod-code">MOD-01</span> Governance</a></li>
-              <li><a href="academy/risk-assessment.html"><span class="mod-code">MOD-02</span> Risk Assessment</a></li>
-              <li><a href="academy/risk-response-reporting.html"><span class="mod-code">MOD-03</span> Risk Response &amp; Reporting</a></li>
-              <li><a href="academy/technology-security.html"><span class="mod-code">MOD-04</span> Technology &amp; Security</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+    <header class="site-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Shelter <span>Academy</span></a>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Academy &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="academy/governance.html" class="dropdown-item">Governance</a></li>
+                            <li><a href="academy/risk-assessment.html" class="dropdown-item">Risk Assessment</a></li>
+                            <li><a href="academy/risk-response-reporting.html" class="dropdown-item">Risk Response & Reporting</a></li>
+                            <li><a href="academy/technology-security.html" class="dropdown-item">Technology & Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <main>
-
-    <!-- Hero -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Free training library</span>
-          <h1>Run a shelter that can withstand anything.</h1>
-          <p class="hero-lede">Four short, practical modules on governance, risk, incident response, and security — written for the trustees, managers, and staff who keep a shelter running safely, not for consultants.</p>
-          <div class="hero-actions">
-            <a href="#modules" class="btn btn-primary">Browse the modules</a>
-            <a href="about.html" class="btn btn-ghost">About the academy</a>
-          </div>
+        <div class="hero-content">
+            <h1>Mastering IT Governance & Information Security Risk</h1>
+            <p>Build resilient organizational frameworks with deep-dive technical alignment and structured control strategies.</p>
+            <a href="academy/governance.html" class="btn">Explore Academy Core Domains</a>
         </div>
-
-        <div class="ledger-card">
-          <div class="ledger-card-head">
-            <span>INTAKE FILE</span>
-            <span>NO. 2026-001</span>
-          </div>
-          <div class="ledger-card-body">
-            <dl style="margin:0;">
-              <div class="ledger-row">
-                <dt>Subject</dt>
-                <dd>New trustee onboarding</dd>
-              </div>
-              <div class="ledger-row">
-                <dt>Recommended modules</dt>
-                <dd>MOD-01, MOD-02</dd>
-              </div>
-              <div class="ledger-row">
-                <dt>Estimated time</dt>
-                <dd>~70 minutes</dd>
-              </div>
-              <div class="ledger-row">
-                <dt>Format</dt>
-                <dd>Self-paced, no login</dd>
-              </div>
-              <div class="ledger-row">
-                <dt>Status</dt>
-                <dd><span class="status-chip">Open</span></dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Why this exists -->
-    <section class="on-paper">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Why it exists</span>
-          <h2>Most shelter risk isn't a single bad night — it's a missing policy.</h2>
-          <p>The board that never agreed on a conflict-of-interest policy. The risk register that lives in someone's head instead of a document. The incident that gets handled well in the moment but never gets written down. Shelter Academy exists to close those gaps before they matter, in plain language, in the time you actually have between shifts and board meetings.</p>
+    <main class="container">
+        <section class="home-intro">
+            <h2>The Four Pillars of Risk &amp; Information Systems Control</h2>
+            <p class="subtitle">A structured breakdown aligned with global industry standards for enterprise resilience.</p>
+        </section>
+
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-icon">🏛️</div>
+                <h3>Governance</h3>
+                <p>Align information security objectives directly with corporate goals, establishing solid organizational ownership, accountability frameworks, and policies.</p>
+                <a href="academy/governance.html" class="card-link">Study Domain 1 &rarr;</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔍</div>
+                <h3>Risk Assessment</h3>
+                <p>Identify vulnerabilities, analyze threat frequencies, evaluate asset impacts, and run deliberate identification methodologies to stay ahead of vectors.</p>
+                <a href="academy/risk-assessment.html" class="card-link">Study Domain 2 &rarr;</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Risk Response &amp; Reporting</h3>
+                <p>Design mitigation plans, track key indicators (KRIs), define clear exceptions, and present actionable dashboards to technical stakeholders and executives.</p>
+                <a href="academy/risk-response-reporting.html" class="card-link">Study Domain 3 &rarr;</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>Technology &amp; Security</h3>
+                <p>Implement core technical controls, harden modern network infrastructure, manage automation, and evaluate continuous testing parameters.</p>
+                <a href="academy/technology-security.html" class="card-link">Study Domain 4 &rarr;</a>
+            </div>
         </div>
-      </div>
-    </section>
+    </main>
 
-    <!-- Module index -->
-    <section id="modules">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">The case file</span>
-          <h2>Four modules. Open any one first.</h2>
-          <p>Each module stands on its own, but they build naturally from governance, into risk, into response, into the systems that hold client data safe.</p>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Shelter Academy</h3>
+                <p>Advancing enterprise cybersecurity capabilities through robust structural awareness and risk framework alignment.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Domains</h4>
+                <ul>
+                    <li><a href="academy/governance.html">Governance</a></li>
+                    <li><a href="academy/risk-assessment.html">Risk Assessment</a></li>
+                    <li><a href="academy/risk-response-reporting.html">Risk Response & Reporting</a></li>
+                    <li><a href="academy/technology-security.html">Technology & Security</a></li>
+                </ul>
+            </div>
         </div>
-
-        <div class="module-index">
-          <article class="module-card" data-code="MOD-01">
-            <span class="track"><span class="track-dot green"></span>Governance</span>
-            <h3>Governance</h3>
-            <p>Board and staff roles, the policies every shelter needs on file, and how to run meetings that produce real decisions.</p>
-            <a href="academy/governance.html" class="open-link">Open file</a>
-          </article>
-
-          <article class="module-card" data-code="MOD-02">
-            <span class="track"><span class="track-dot amber"></span>Risk Assessment</span>
-            <h3>Risk Assessment</h3>
-            <p>Build a risk register that's actually used: likelihood, impact, and the shelter-specific risks generic templates miss.</p>
-            <a href="academy/risk-assessment.html" class="open-link">Open file</a>
-          </article>
-
-          <article class="module-card" data-code="MOD-03">
-            <span class="track"><span class="track-dot brick"></span>Risk Response</span>
-            <h3>Risk Response &amp; Reporting</h3>
-            <p>What to do the moment something goes wrong: response strategies, escalation paths, and writing a report that holds up.</p>
-            <a href="academy/risk-response-reporting.html" class="open-link">Open file</a>
-          </article>
-
-          <article class="module-card" data-code="MOD-04">
-            <span class="track"><span class="track-dot navy"></span>Technology</span>
-            <h3>Technology &amp; Security</h3>
-            <p>Protecting client data and, where relevant, client location — covering access controls, retention, and breach response.</p>
-            <a href="academy/technology-security.html" class="open-link">Open file</a>
-          </article>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shelter Academy. Designed for Enterprise Security Competency.</p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <!-- Who it's for -->
-    <section class="on-paper">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Who it's for</span>
-          <h2>Built for the people actually doing the work.</h2>
-        </div>
-        <ul class="ruled-list">
-          <li>
-            <span class="label">Trustees &amp; board members</span>
-            <span class="desc"><strong>Governance is your job before it's anyone else's.</strong> Start with MOD-01 to understand exactly where your responsibility starts and where it hands off to staff.</span>
-          </li>
-          <li>
-            <span class="label">Executive directors &amp; managers</span>
-            <span class="desc"><strong>You're translating policy into daily practice.</strong> MOD-02 and MOD-03 give you a risk register and a reporting workflow you can put in place this month.</span>
-          </li>
-          <li>
-            <span class="label">Frontline staff &amp; volunteers</span>
-            <span class="desc"><strong>You're the ones who notice problems first.</strong> MOD-03's incident reporting steps are written for the person on shift, not the boardroom.</span>
-          </li>
-          <li>
-            <span class="label">Compliance &amp; safeguarding leads</span>
-            <span class="desc"><strong>Data and physical security intersect constantly.</strong> MOD-04 covers both sides of that overlap, including location confidentiality.</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="tight">
-      <div class="container">
-        <div class="cta-band">
-          <div>
-            <h2>Ready to open your first file?</h2>
-            <p>Governance is the natural starting point — everything else in the academy assumes it.</p>
-          </div>
-          <a href="academy/governance.html" class="btn btn-primary">Start with MOD-01 →</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="brand">
-            <span class="brand-mark">SA</span>
-            <span class="brand-text">Shelter<br>Academy</span>
-          </a>
-          <p>Practical governance and risk training for the people who run shelters — free, self-paced, no login required.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Academy</h4>
-          <ul>
-            <li><a href="academy/governance.html">Governance</a></li>
-            <li><a href="academy/risk-assessment.html">Risk Assessment</a></li>
-            <li><a href="academy/risk-response-reporting.html">Risk Response &amp; Reporting</a></li>
-            <li><a href="academy/technology-security.html">Technology &amp; Security</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Site</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-meta">
-        <span>© 2026 Shelter Academy</span>
-        <span>Training reference material — not a substitute for legal advice</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

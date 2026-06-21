@@ -1,200 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOD-02 · Risk Assessment — Shelter Academy</title>
-  <meta name="description" content="Build a risk register that's actually used: likelihood, impact, and the shelter-specific risks generic templates miss.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment - Shelter Academy</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="../index.html" class="brand">
-        <span class="brand-mark">SA</span>
-        <span class="brand-text">Shelter<br>Academy</span>
-      </a>
-      <nav class="site-nav" id="siteNav">
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../about.html">About</a></li>
-          <li class="has-dropdown">
-            <button class="dropdown-toggle" aria-expanded="false" aria-controls="academyMenu">
-              Academy <span class="caret">▾</span>
-            </button>
-            <ul class="dropdown-menu" id="academyMenu">
-              <li><a href="governance.html"><span class="mod-code">MOD-01</span> Governance</a></li>
-              <li><a href="risk-assessment.html"><span class="mod-code">MOD-02</span> Risk Assessment</a></li>
-              <li><a href="risk-response-reporting.html"><span class="mod-code">MOD-03</span> Risk Response &amp; Reporting</a></li>
-              <li><a href="technology-security.html"><span class="mod-code">MOD-04</span> Technology &amp; Security</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="page-header">
-      <div class="container">
-        <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#modules">Academy</a> / Risk Assessment</p>
-        <span class="file-stamp">MOD-02 · RISK ASSESSMENT</span>
-        <h1>Risk Assessment</h1>
-        <p class="hero-lede" style="margin-bottom:18px;">Naming what could go wrong before it does, and scoring it honestly enough that the register actually gets used.</p>
-        <div class="page-meta">
-          <span>⏱ ~25 min read</span>
-          <span>📋 Includes a self-check checklist</span>
-          <span>🎯 For EDs, managers, and compliance leads</span>
+    <header class="site-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html">Shelter <span>Academy</span></a>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link dropdown-toggle">Academy &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="governance.html" class="dropdown-item">Governance</a></li>
+                            <li><a href="risk-assessment.html" class="dropdown-item">Risk Assessment</a></li>
+                            <li><a href="risk-response-reporting.html" class="dropdown-item">Risk Response & Reporting</a></li>
+                            <li><a href="technology-security.html" class="dropdown-item">Technology & Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../about.html" class="nav-link">About Us</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <div class="container module-layout">
-      <aside class="module-toc">
-        <span class="eyebrow">In this file</span>
-        <ul>
-          <li><a href="#what-is-risk">Risk assessment, defined plainly</a></li>
-          <li><a href="#categories">Common shelter risk categories</a></li>
-          <li><a href="#scoring">Scoring likelihood &amp; impact</a></li>
-          <li><a href="#walkthrough">Running a walkthrough assessment</a></li>
-          <li><a href="#checklist">Self-check checklist</a></li>
-        </ul>
-      </aside>
-
-      <article class="module-content">
-
-        <section id="what-is-risk">
-          <h2>Risk assessment, defined plainly</h2>
-          <p>A risk assessment is just a written answer to three questions, repeated for everything that could go wrong: <strong>what could happen, how likely is it, and how bad would it be if it did?</strong> The output is a risk register — a single document listing each risk, its score, and what's being done about it.</p>
-          <p>The reason most risk registers stop being used after the first month isn't that the format is wrong. It's that they're built once, during a grant application or audit, and never touched again. A register only earns its place if someone owns it and revisits it on a schedule — see the cadence note in MOD-01.</p>
-        </section>
-
-        <section id="categories">
-          <h2>Common shelter risk categories</h2>
-          <p>Generic corporate risk templates tend to miss the risks that are specific to running a shelter. Start from this list instead, and add what's specific to your site and population.</p>
-
-          <table class="data-table">
-            <caption>Risk categories worth a line item</caption>
-            <thead>
-              <tr><th>Category</th><th>Examples</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Client safeguarding</td><td>Abuse or exploitation by staff, volunteers, or other clients; inadequate vetting</td></tr>
-              <tr><td>Physical safety</td><td>Fire egress, overcrowding, unsecured hazardous materials, violence on-site</td></tr>
-              <tr><td>Staffing</td><td>Burnout-driven turnover, single points of failure, inadequate shift coverage overnight</td></tr>
-              <tr><td>Financial</td><td>Funding cliffs, unrestricted vs. restricted fund confusion, fraud</td></tr>
-              <tr><td>Reputational</td><td>A poorly handled incident becoming public, loss of community or funder trust</td></tr>
-              <tr><td>Data &amp; privacy</td><td>Client records exposed, location confidentiality broken (see MOD-04)</td></tr>
-              <tr><td>Legal &amp; regulatory</td><td>Licensing lapses, non-compliance with mandatory reporting laws</td></tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section id="scoring">
-          <h2>Scoring likelihood &amp; impact</h2>
-          <p>A simple 1–3 scale on each axis is enough for most shelters — finer scales tend to create false precision without improving decisions. Multiply the two to get a priority score.</p>
-
-          <table class="data-table">
-            <caption>Likelihood × impact scoring</caption>
-            <thead>
-              <tr><th>Score</th><th>Likelihood</th><th>Impact</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>1</td><td>Rare — hasn't happened here</td><td>Minor — handled within the shift</td></tr>
-              <tr><td>2</td><td>Possible — has happened occasionally</td><td>Serious — requires management involvement</td></tr>
-              <tr><td>3</td><td>Likely — has happened recently or repeatedly</td><td>Severe — safety, legal, or existential consequences</td></tr>
-            </tbody>
-          </table>
-
-          <div class="callout risk">
-            <span class="label">Where honesty matters most</span>
-            <p>The temptation is to score familiar risks lower because "we've always managed." Familiarity isn't the same as low likelihood — if it's happened before, it's likely, by definition. Score based on history and conditions, not on how comfortable the topic feels to discuss.</p>
-          </div>
-        </section>
-
-        <section id="walkthrough">
-          <h2>Running a walkthrough assessment</h2>
-          <p>The fastest way to populate or refresh a register is a physical and procedural walkthrough, done with more than one person so blind spots get caught.</p>
-          <ul class="bullet">
-            <li><strong>Walk the physical site</strong> as if you were a new client and separately as if you were a new staff member on an overnight shift — different routes surface different hazards.</li>
-            <li><strong>Review the last 12 months of incident reports</strong> (see MOD-03) for patterns that haven't made it into the register yet.</li>
-            <li><strong>Ask frontline staff directly</strong> what they worry about that's never come up in a meeting — they often see risk before it's documented anywhere.</li>
-            <li><strong>Check every policy from MOD-01</strong> against what actually happens day to day; a gap between the two is itself a risk.</li>
-          </ul>
-        </section>
-
-        <section id="checklist">
-          <h2>Self-check checklist</h2>
-          <div class="checklist">
-            <h3>Run this against your current risk register</h3>
+    <div class="academy-layout container">
+        <aside class="academy-sidebar">
+            <h3>Academy Domains</h3>
             <ul>
-              <li><input type="checkbox" id="r1"><label for="r1">A written risk register exists and covers all seven categories above.</label></li>
-              <li><input type="checkbox" id="r2"><label for="r2">Every risk has a likelihood score, an impact score, and a named owner.</label></li>
-              <li><input type="checkbox" id="r3"><label for="r3">The register has been reviewed in the last six months.</label></li>
-              <li><input type="checkbox" id="r4"><label for="r4">Frontline staff have had a direct chance to flag risks, not just leadership.</label></li>
-              <li><input type="checkbox" id="r5"><label for="r5">The highest-scoring risks have a documented response plan, not just a score.</label></li>
+                <li><a href="governance.html">1. IT Governance</a></li>
+                <li><a href="risk-assessment.html" class="active">2. Risk Assessment</a></li>
+                <li><a href="risk-response-reporting.html">3. Response &amp; Reporting</a></li>
+                <li><a href="technology-security.html">4. Technology &amp; Security</a></li>
             </ul>
-          </div>
-        </section>
+        </aside>
 
-      </article>
+        <main class="academy-main-content">
+            <h1>Domain 2: Information Risk Assessment Methodologies</h1>
+            <p class="lead">Systematically identifying, evaluating, and prioritizing risk metrics to minimize unexpected asset disruption.</p>
+            
+            <hr>
+
+            <h2>Identification of Vulnerabilities &amp; Threats</h2>
+            <p>Risk assessment begins with deep environmental visibility. Vulnerabilities are inherent weaknesses within an infrastructure, system, or process, while threats represent any circumstances with the potential to exploit those specific weaknesses.</p>
+
+            <h3>Reconnaissance &amp; Discovery Operations</h3>
+            <p>Security teams conduct continuous technical identification activities, using discovery frameworks and network mapping processes to audit live endpoints, running software services, and exposed assets across network environments.</p>
+
+            <h2>Qualitative vs. Quantitative Analysis</h2>
+            <p>To establish clear corporate priorities, organizations measure risks using two foundational models:</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Methodology</th>
+                        <th>Focus Metrics</th>
+                        <th>Pros / Benefits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Qualitative Analysis</strong></td>
+                        <td>Subjective grading scales (e.g., Low, Medium, High) based on scenarios and expert consensus.</td>
+                        <td>Quick to implement, easy to communicate across non-technical management departments.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quantitative Analysis</strong></td>
+                        <td>Numerical, asset-valued calculations utilizing financial equations ($).</td>
+                        <td>Provides precise budget cost-benefit calculations for exact business justifications.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Core Quantitative Calculations</h3>
+            <p>Quantitative calculations allow security professionals to model financial risk using standard formulas:</p>
+            <ul>
+                <li><strong>Single Loss Expectancy (SLE):</strong> Asset Value &times; Exposure Factor</li>
+                <li><strong>Annualized Rate of Occurrence (ARO):</strong> Number of estimated threat events per year.</li>
+                <li><strong>Annualized Loss Expectancy (ALE):</strong> SLE &times; ARO</li>
+            </ul>
+        </main>
     </div>
 
-    <div class="container">
-      <div class="module-footer-nav">
-        <a href="governance.html" class="btn btn-ghost">← MOD-01 · Governance</a>
-        <a href="risk-response-reporting.html" class="next-module">
-          <span>
-            <span class="next-label">Next file</span>
-            <span class="next-title">MOD-03 · Risk Response &amp; Reporting</span>
-          </span>
-        </a>
-      </div>
-    </div>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="../index.html" class="brand">
-            <span class="brand-mark">SA</span>
-            <span class="brand-text">Shelter<br>Academy</span>
-          </a>
-          <p>Practical governance and risk training for the people who run shelters — free, self-paced, no login required.</p>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Shelter Academy</h3>
+                <p>Advancing enterprise cybersecurity capabilities through robust structural awareness and risk framework alignment.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Domains</h4>
+                <ul>
+                    <li><a href="governance.html">Governance</a></li>
+                    <li><a href="risk-assessment.html">Risk Assessment</a></li>
+                    <li><a href="risk-response-reporting.html">Risk Response & Reporting</a></li>
+                    <li><a href="technology-security.html">Technology & Security</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-col">
-          <h4>Academy</h4>
-          <ul>
-            <li><a href="governance.html">Governance</a></li>
-            <li><a href="risk-assessment.html">Risk Assessment</a></li>
-            <li><a href="risk-response-reporting.html">Risk Response &amp; Reporting</a></li>
-            <li><a href="technology-security.html">Technology &amp; Security</a></li>
-          </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shelter Academy. Designed for Enterprise Security Competency.</p>
         </div>
-        <div class="footer-col">
-          <h4>Site</h4>
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../about.html">About</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-meta">
-        <span>© 2026 Shelter Academy</span>
-        <span>Training reference material — not a substitute for legal advice</span>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="../js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
