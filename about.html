@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Shelter Academy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Shelter <span>Academy</span></a>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Academy &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="academy/governance.html" class="dropdown-item">Governance</a></li>
+                            <li><a href="academy/risk-assessment.html" class="dropdown-item">Risk Assessment</a></li>
+                            <li><a href="academy/risk-response-reporting.html" class="dropdown-item">Risk Response & Reporting</a></li>
+                            <li><a href="academy/technology-security.html" class="dropdown-item">Technology & Security</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item active"><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="about-section">
+            <h1>Our Mission &amp; Vision</h1>
+            <p class="about-lead">Shelter Academy is an educational platform designed to elevate information security competencies across enterprise structures.</p>
+            
+            <div class="about-content-block">
+                <h2>Strategic Security Awareness</h2>
+                <p>In modern enterprise environments, technological defenses alone are not enough to safeguard operational integrity. True resilience requires structural ownership and a strong risk management culture across all lines of defense.</p>
+                <p>We provide deep insights into risk frameworks, technical systems control alignment, and corporate compliance architectures to bridge the gap between technical operations and executive governance.</p>
+            </div>
+
+            <div class="grid-container" style="margin-top: 3rem;">
+                <div class="card">
+                    <h3>Clarity</h3>
+                    <p>Breaking down complex security policies and technical controls into structured, actionable guides.</p>
+                </div>
+                <div class="card">
+                    <h3>Resilience</h3>
+                    <p>Focusing on defensive engineering, comprehensive continuity parameters, and sound risk responses.</p>
+                </div>
+                <div class="card">
+                    <h3>Alignment</h3>
+                    <p>Ensuring that IT risks are directly identified, measured, and treated to support strategic business objectives.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Shelter Academy</h3>
+                <p>Advancing enterprise cybersecurity capabilities through robust structural awareness and risk framework alignment.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Domains</h4>
+                <ul>
+                    <li><a href="academy/governance.html">Governance</a></li>
+                    <li><a href="academy/risk-assessment.html">Risk Assessment</a></li>
+                    <li><a href="academy/risk-response-reporting.html">Risk Response & Reporting</a></li>
+                    <li><a href="academy/technology-security.html">Technology & Security</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shelter Academy. Designed for Enterprise Security Competency.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

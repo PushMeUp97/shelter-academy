@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>IT Risk Assessment | Complete 123 Q&A Set</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f8;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            color: #1a2c2e;
+        }
+
+        .quiz-container {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem 2rem 2rem;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e9edf2;
+            padding-bottom: 1.2rem;
+        }
+        .quiz-header h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1a4d4a, #2c7a6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.4rem;
+        }
+        .quiz-header p {
+            color: #5b6e6e;
+            font-size: 0.95rem;
+            font-weight: 450;
+        }
+
+        .quiz-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1f5e58;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e7edf0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.8rem;
+        }
+
+        #progressFill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #1a4d4a, #2c7a6e);
+            transition: width 0.3s ease;
+        }
+
+        .question-block {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .q-meta {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #7a8e92;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #0b1f22;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+            padding-left: 0.8rem;
+            border-left: 4px solid #2c7a6e;
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.6rem;
+            border: 2px solid #e4ebef;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .option-item:hover:not(.disabled) {
+            border-color: #b8cdc9;
+            background: #f7faf9;
+        }
+
+        .option-item.disabled {
+            cursor: default;
+        }
+
+        .option-item.disabled:hover {
+            border-color: #e4ebef;
+            background: white;
+        }
+
+        .option-item.disabled.correct:hover {
+            border-color: #3b9e6d;
+            background: #e7f8ef;
+        }
+
+        .option-item.disabled.wrong:hover {
+            border-color: #c72a2a;
+            background: #fff0f0;
+        }
+
+        .option-letter {
+            font-weight: 700;
+            color: #5a6e72;
+            flex-shrink: 0;
+            min-width: 24px;
+            font-size: 0.9rem;
+        }
+
+        .option-text {
+            flex: 1;
+            color: #1d2c2e;
+            word-break: break-word;
+        }
+
+        .option-status {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            margin-left: 0.3rem;
+        }
+
+        /* Selected states */
+        .option-item.selected-correct {
+            border-color: #3b9e6d;
+            background: #e7f8ef;
+        }
+
+        .option-item.selected-wrong {
+            border-color: #c72a2a;
+            background: #fff0f0;
+        }
+
+        .option-item.correct-answer {
+            border-color: #3b9e6d;
+            background: #e7f8ef;
+        }
+
+        .answer-result {
+            font-weight: 700;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0.8rem 0;
+        }
+
+        .answer-result.correct {
+            color: #216e48;
+            background: #e7f8ef;
+            border-left: 4px solid #3b9e6d;
+        }
+
+        .answer-result.wrong {
+            color: #9a1f1f;
+            background: #fff0f0;
+            border-left: 4px solid #c72a2a;
+        }
+
+        .explanation-box {
+            background: #f1f7f5;
+            border-left: 4px solid #2c7a6e;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            margin-top: 0.3rem;
+        }
+
+        .explanation-title {
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #1a6b5a;
+            margin-bottom: 0.25rem;
+        }
+
+        .explanation-text {
+            font-size: 0.9rem;
+            color: #1e443a;
+            line-height: 1.5;
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e8ecf0;
+        }
+
+        .quiz-actions button {
+            border: none;
+            padding: 0.7rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #e8ecf0;
+            color: #3d5255;
+        }
+
+        .quiz-actions button:hover:not(:disabled) {
+            background: #d5dce3;
+        }
+
+        .quiz-actions button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .quiz-actions button.next-btn {
+            background: #2c7a6e;
+            color: white;
+        }
+
+        .quiz-actions button.next-btn:hover:not(:disabled) {
+            background: #1f655b;
+        }
+
+        .quiz-actions button.restart-btn {
+            background: #1a4d4a;
+            color: white;
+        }
+
+        .quiz-actions button.restart-btn:hover {
+            background: #0f3a37;
+        }
+
+        .final-result {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: #f9fbfd;
+            border-radius: 18px;
+            margin: 0.5rem 0;
+        }
+
+        .final-result h2 {
+            color: #1f5e58;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .final-score {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #2c7a6e;
+            margin-bottom: 0.5rem;
+        }
+
+        .final-result p {
+            font-size: 1rem;
+            color: #3d5a5a;
+            margin-bottom: 0.3rem;
+        }
+
+        .quiz-footer {
+            margin-top: 1.8rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8fa3a3;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 640px) {
+            .quiz-container {
+                padding: 1.2rem;
+            }
+
+            .quiz-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .question-text {
+                font-size: 1rem;
+            }
+
+            .option-item {
+                font-size: 0.88rem;
+                padding: 0.6rem 0.8rem;
+            }
+
+            .quiz-actions button {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .final-score {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .quiz-container {
+                padding: 0.8rem;
+            }
+
+            .question-text {
+                font-size: 0.9rem;
+                padding-left: 0.5rem;
+            }
+
+            .option-item {
+                font-size: 0.82rem;
+                padding: 0.5rem 0.6rem;
+                gap: 0.5rem;
+            }
+
+            .quiz-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quiz-actions button {
+                width: 100%;
+                max-width: 280px;
+                padding: 0.6rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+<div class="quiz-container">
+    <div class="quiz-header">
+        <h1>📘 IT Risk Assessment · Complete 123 Q&A</h1>
+        <p>Expert-level questions — risk identification, analysis, evaluation, scenarios, registers, BIA & assessment methodologies</p>
+    </div>
+
+    <div class="quiz-status">
+        <div id="progressText">Question 1 of 123</div>
+        <div id="scoreText">Score: 0</div>
+    </div>
+
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    </div>
+
+    <div id="questionsRoot"></div>
+
+    <div class="quiz-actions">
+        <button id="nextBtn" class="next-btn" disabled>Next →</button>
+        <button id="restartBtn" class="restart-btn" style="display: none;">🔄 Restart Quiz</button>
+    </div>
+
+    <div class="quiz-footer">
+        ✅ Full set of 123 expert-level questions | IT Risk Assessment framework
+    </div>
+</div>
+
+<script>
+    // Complete dataset for IT Risk Assessment (123 questions)
+    const qaData = [
+        {q:"While prioritizing the risk for treatment, the IT risk practitioner should PRIMARILY consider the:", opts:["risk impact","risk appetite","risk exposure","risk rating"], correct:"D", justification:"The risk rating quantifies the risk by providing a ranking (for example, high, medium, low) that can be used to prioritize treatment."},
+        {q:"The PRIMARY result of a risk assessment process is:", opts:["a defined business plan.","input for risk-aware decisions.","data classification.","minimized residual risk."], correct:"B", justification:"Risk assessment identifies and prioritizes risk and relates the aggregated risk to the enterprise's risk appetite and risk tolerance levels to enable risk-aware decision-making."},
+        {q:"At the end of which phase of risk management would information about newly discovered risk be communicated to decision makers and relevant stakeholders?", opts:["Risk identification","Risk response and mitigation","Risk assessment","Risk and control monitoring and reporting"], correct:"C", justification:"During the risk assessment phase, identified risk is being analyzed and evaluated for likelihood and impact. Risk-based decision-making is enabled through communication of the results of the risk assessment."},
+        {q:"Which of the following capability dimensions is MOST important when using a maturity model for assessing the risk management process?", opts:["Effectiveness","Efficiency","Profitability","Performance"], correct:"D", justification:"Performance is achieved when the implemented process fulfills its purpose; thus, performance is the most important capability dimension when using a capability maturity model to assess the risk management process."},
+        {q:"IT risk is measured by its:", opts:["level of damage to IT systems.","impact on business operations.","cost of countermeasures.","annual loss expectancy."], correct:"B", justification:"IT risk includes information and communication technology risk but is primarily measured by its impact on the business."},
+        {q:"Which of the following is the PRIMARY reason for conducting periodic risk assessments?", opts:["Changes to the asset inventory","Changes to the threat and vulnerability profile","Changes in asset classification levels","Changes in the risk appetite"], correct:"B", justification:"Changes in threats and vulnerabilities, including new occurrences of either, are the primary reasons to conduct periodic risk assessments."},
+        {q:"Which of the following is MOST important during the quantitative risk analysis process?", opts:["Statistical analysis","Decision trees","Expected monetary value","Net present value"], correct:"C", justification:"Expected monetary value reflects the weighted average of probable outcomes. It represents the expected average payoff if you make a given decision."},
+        {q:"Which type of risk assessment method involves conducting interviews and using anonymous questionnaires answered by subject matter experts (Delphi method)?", opts:["Quantitative","Probabilistic","Deterministic","Qualitative"], correct:"D", justification:"Qualitative risk assessment methods include interviewing and using anonymous questionnaires (the Delphi method)."},
+        {q:"The chief information security officer wants to provide a view of risk assessment results to the board that highlights links between possible causes, controls and consequences. Which risk assessment technique will produce the desired view?", opts:["Bow tie analysis","Markov analysis","Scenario analysis","Sneak circuit analysis"], correct:"A", justification:"Bow tie analysis conveys risk assessment results through a diagram displaying links between possible causes, controls and consequences."},
+        {q:"Which data analysis method will be MOST effective in a comprehensive review of both hardware and human failures to identify the source of an incident?", opts:["Cause and effect analysis","Fault tree analysis","Sensitivity analysis","Bayesian analysis"], correct:"B", justification:"Fault tree analysis can identify potential causes of failures before the failures occur, not afterward. It combines assessment of potential hardware and human failures to identify the source of an incident."},
+        {q:"Which of the following is the BEST reason to perform a risk assessment?", opts:["To satisfy regulatory requirements","To budget appropriately for needed controls","To analyze the effect on the business","To help determine the current state of risk"], correct:"D", justification:"The risk assessment is used to identify and evaluate the impact of failure on critical business processes and to determine time frames, priorities, resources and interdependencies. It helps determine the current state of risk."},
+        {q:"A risk practitioner has become aware of a potential merger with another enterprise. What action should the risk practitioner take?", opts:["Evaluate how the changes in business operations and culture could affect the risk assessment.","Monitor the situation to see if any new risk emerges due to the proposed changes.","Continue to monitor and enforce the current risk program because it is already tailored appropriately for the enterprise.","Implement changes to the risk program to prepare for the transition."], correct:"A", justification:"Changes to the business may impact risk calculations, and the risk practitioner should be proactive and be prepared to deal with any changes as they happen."},
+        {q:"Which of the following BEST assists a risk practitioner in measuring the existing level of development of risk management processes against the desired state?", opts:["A capability maturity model","Risk management audit reports","A balanced scorecard","Enterprise security architecture"], correct:"A", justification:"The capability maturity model grades processes on a scale of 0 to 5, based on their maturity, and is commonly used by entities to measure their existing state and then to determine the desired one."},
+        {q:"Risk assessments should be repeated at regular intervals because:", opts:["omissions in earlier assessments can be addressed.","periodic assessments allow various methodologies.","business threats are constantly changing.","they help raise risk awareness among staff."], correct:"C", justification:"As business objectives and methods change, the nature and relevance of threats also change."},
+        {q:"The PRIMARY reason an external risk assessment team reviews documentation as the first step in the risk assessment is to gain a thorough understanding of:", opts:["the technologies used.","gaps in the documentation.","the enterprise's business processes.","the risk assessment plan."], correct:"C", justification:"In order to evaluate risk, the external assessment team should thoroughly understand the enterprise's business processes before the assessment, because risk is always formulated within the context of business objectives."},
+        {q:"During an internal risk assessment in a global enterprise, a risk manager notes that local management has proactively mitigated some of the high-level risk related to the global purchasing process. This means that:", opts:["the local management is now responsible for the risk.","the risk owner is the corporate chief risk officer.","the risk owner is the local purchasing manager.","corporate management remains responsible for the risk."], correct:"D", justification:"Corporate management remains responsible for the risk, even when the risk response is executed at a lower organizational level."},
+        {q:"The MOST effective method to conduct a risk assessment on an internal system in an enterprise is to start by understanding the:", opts:["performance metrics and indicators.","policies and standards.","recent audit findings and recommendations.","system and its subsystems."], correct:"D", justification:"To conduct a proper risk assessment, the risk practitioner must understand the system and subsystems, and how they work. This knowledge provides the basis for understanding how policies and standards are applied."},
+        {q:"The PRIMARY reason to have the risk management process reviewed by an independent risk management professional is to:", opts:["validate cost-effective solutions for mitigating risk.","validate control weaknesses detected by the internal team.","assess the validity of the end-to-end process.","assess whether the risk profile and risk factors are properly defined."], correct:"C", justification:"The independent risk professional will be unbiased to review the risk management process end to end. The independent reviewer will not have any involvement in any stage of the risk management process."},
+        {q:"Which of the following risk management activities initially identifies critical business functions and key business risk?", opts:["Risk monitoring","Risk analysis","Risk assessment","Risk evaluation"], correct:"C", justification:"Risk assessment identifies and evaluates risk and its potential effects. It includes recognizing and assessing critical functions and processes necessary for an enterprise to continue operating."},
+        {q:"The MOST important of the following external factors that should be considered in risk assessment is:", opts:["the discovery of new vulnerabilities.","the number of viruses and other malware being developed.","international crime statistics and political unrest.","the connectivity of many unsecured devices on the Internet."], correct:"D", justification:"The proliferation of unsecured devices (i.e., the Internet of Things) creates a serious external threat that must be considered."},
+        {q:"Which of the following activities is MOST important when evaluating and assessing the risk to an enterprise or business process?", opts:["Identification of controls that are currently in place to mitigate identified risk","Threat intelligence, including likelihood of identified threats","Historical risk assessment data","Control testing results"], correct:"B", justification:"One of the key requirements of effective risk assessment is its association and alignment with current intelligence that includes data on the likelihood of identified threats."},
+        {q:"Which of the following is BEST suited for the review of IT risk analysis results before the results are sent to management for approval and use in decision-making?", opts:["An internal audit review","A peer review","A compliance review","A risk policy review"], correct:"B", justification:"It is effective, efficient and good practice to perform a peer review of IT risk analysis results before sending them to management."},
+        {q:"The PRIMARY benefit of using a maturity model to assess the enterprise's data management process is that it:", opts:["can be used for benchmarking.","helps identify gaps.","provides goals and objectives.","enforces continuous improvement."], correct:"B", justification:"Maturity models can be used to help identify gaps between the current and the desired state to help enterprises determine necessary remediation efforts."},
+        {q:"Risk assessment techniques should be used by a risk practitioner to:", opts:["maximize the return on investment.","provide documentation for auditors and regulators.","justify the selection of risk mitigation strategies.","quantify the risk that would otherwise be subjective."], correct:"C", justification:"A risk practitioner should use risk assessment techniques to justify and implement a risk mitigation strategy as efficiently as possible."},
+        {q:"What is a PRIMARY advantage of performing a risk assessment on a consistent basis?", opts:["It lowers the costs of assessing risk.","It provides evidence of threats.","It indicates trends in the risk profile.","It eliminates the need for periodic audits."], correct:"C", justification:"Tracking trends in evolving risk is of significant benefit to managing risk and ensuring that appropriate controls are in place."},
+        {q:"Assessing information systems risk is BEST achieved by:", opts:["using the enterprise's past actual loss experience to determine current exposure.","reviewing published loss statistics from comparable enterprises.","evaluating threats associated with existing information systems assets.","reviewing information systems control weaknesses identified in audit reports."], correct:"C", justification:"To assess IT risk, threats and vulnerabilities need to be evaluated using qualitative or quantitative risk assessment approaches."},
+        {q:"Which risk assessment technique would the practitioner use to analyze system exposure to personnel?", opts:["Hazard and operability studies","Markov analysis","Human reliability analysis","Scenario analysis"], correct:"C", justification:"Human reliability analysis exclusively focuses on the effects of human error in enterprise systems."},
+        {q:"Once a risk assessment has been completed, the documented test results should be:", opts:["destroyed.","retained.","summarized.","published."], correct:"B", justification:"Test results should be retained in order to ensure that future tests can be compared with past results and ensure reporting consistency."},
+        {q:"The goal of IT risk analysis is to:", opts:["enable the alignment of IT risk management with enterprise risk management.","enable the prioritization of risk responses.","satisfy legal and regulatory compliance requirements.","identify known threats and vulnerabilities to information assets."], correct:"B", justification:"Risk analysis estimates the likelihood and magnitude of IT risk scenarios. Risk analysis helps ensure that areas with the greatest risk likelihood and impact are prioritized above those with lower likelihood and impact."},
+        {q:"A risk assessment process that uses likelihood and impact in calculating the level of risk is a:", opts:["qualitative process.","failure modes and effects analysis.","fault tree analysis.","quantitative process."], correct:"D", justification:"A quantitative risk assessment uses likelihood and impact to calculate the monetary value of risk."},
+        {q:"Which of the following techniques associated with risk analysis has the GREATEST impact on the decision whether to implement a control?", opts:["Cost-benefit analysis","Payback period","Root cause analysis","Net present value"], correct:"A", justification:"The decision to implement a control is based on whether the cost of implementing and maintaining the control will exceed the cost savings associated with the risk the control is meant to address. Cost-benefit analysis compares these factors."},
+        {q:"The board of directors wants to know the financial impact of specific, individual risk scenarios. What type of approach is BEST suited to fulfill this requirement?", opts:["Delphi method","Quantitative analysis","Qualitative analysis","Financial risk modeling"], correct:"B", justification:"A quantitative approach to risk evaluations would be the best approach because it is formula-based and puts a monetary amount on the potential loss resulting from a risk scenario."},
+        {q:"How often should risk be evaluated?", opts:["Annually or when there is a significant change","Once a year for each business process and subprocess","Every three to six months for critical business processes","Only after significant changes occur"], correct:"A", justification:"Risk is constantly changing. Evaluating risk annually or when there is a significant change offers the best alternative; this approach considers reasonable frequency of review and allows flexibility to address significant intervening change."},
+        {q:"Which of the following considerations is MOST applicable to risk assessments dealing with data management?", opts:["Changing market conditions","Changing configuration item data","Lack of staff education","Growing capabilities of attackers"], correct:"B", justification:"Attributes and relationships for configuration items are subject to frequent change, and risk assessments must have accurate and up-to-date configuration item data in order to target correct information assets."},
+        {q:"Which of the following is the PRIMARY factor when deciding between conducting a quantitative or qualitative risk assessment?", opts:["The corporate culture","The amount of time available","The availability of data","The cost involved with risk assessment"], correct:"C", justification:"The availability of data is the primary factor in deciding between a quantitative and qualitative risk analysis. The requirement of data sets for both methods is altogether different."},
+        {q:"The likelihood of an attack being launched against an enterprise is MOST dependent on:", opts:["the skill and motivation of the potential attacker.","the frequency that monitoring systems are reviewed.","the ability to respond quickly to any incident.","the effectiveness of the controls."], correct:"A", justification:"Factors that affect likelihood include the skill and motivation of the attacker; knowledge of vulnerabilities; use of popular hardware or software; value of the asset; and environmental factors."},
+        {q:"Which of the following is the BEST risk identification technique to support an enterprise that allows employees to identify risk anonymously?", opts:["The Delphi technique","Isolated pilot groups","A SWOT analysis","A root cause analysis"], correct:"A", justification:"With the Delphi technique, polling or information gathering is done either anonymously or privately between the interviewer and interviewee."},
+        {q:"Which of the following should management use to allocate resources for risk response?", opts:["Audit report findings","Penetration test results","Risk analysis results","Vulnerability test results"], correct:"C", justification:"Risk analysis results provide a basis for prioritizing risk responses and allocating resources."},
+        {q:"Which of the following is the GREATEST challenge of performing a quantitative risk analysis?", opts:["Obtaining accurate figures on the impact of a realized threat","Obtaining accurate figures on the value of assets","Calculating the annual loss expectancy of a specific threat","Obtaining accurate figures on the frequency of specific threats"], correct:"D", justification:"It can be challenging to obtain an accurate figure representing the frequency of threat occurrence."},
+        {q:"Deriving the likelihood and impact of risk scenarios through statistical methods is BEST described as:", opts:["quantitative risk analysis.","risk scenario analysis.","qualitative risk analysis.","probabilistic risk assessment."], correct:"A", justification:"Quantitative risk analysis derives the probability and impact of risk scenarios from statistical methods and data."},
+        {q:"It is MOST important for a risk evaluation to:", opts:["take into account the potential size and likelihood of a loss.","consider inherent and control risk.","include a benchmark of similar companies in its scope.","assume an equal degree of protection for all assets."], correct:"A", justification:"Risk evaluation should consider the potential size and likelihood of a loss."},
+        {q:"Which of the following will produce comprehensive results when performing a qualitative risk analysis?", opts:["A vulnerability assessment","Scenarios with threats and impacts","The value of information assets","Estimated productivity losses"], correct:"B", justification:"Using a list of possible scenarios with threats and impacts will better frame the range of risk and facilitate a more informed discussion and decision."},
+        {q:"A government agency is charged with enforcement of a regulation for processing electronic health records. Violations of the regulation result in a set fine of US$1 million. A risk analyst is charged with calculating the potential impact to two enterprises: Enterprise A, with capital of US$10 million, and Enterprise B, with capital of US$100 million. Which of the following assertions is reasonable regarding the impact to the enterprises?", opts:["The impact to both enterprises is the same because the dollar amount of the fine is the same.","The impact to both enterprises is the same because the utility of money is the same regardless of how much capital an enterprise has.","The impact to Enterprise A is higher because the utility of the fine in proportion to the capital of the organization is greater.","The impact to the organizations cannot be calculated because the loss is tangible."], correct:"C", justification:"The utility of money is directly correlated to the proportion of the money in relation to the capital of the entity affected by the event."},
+        {q:"What is the ULTIMATE goal of risk aggregation?", opts:["To prevent attacks from exploiting a combination of low-level types of risk that individually have not been properly mitigated","To address the threat of an exploit that attacks a system through a series of individual attacks","To ensure that the combined value of low-level risk is not overlooked in the risk management process","To stop attackers from gaining low-level access and then escalating their attack through access aggregation"], correct:"C", justification:"Individual or singular, discrete, low-level incidents may have minimal impact, and considered independently, the risk may remain relatively low. However, significant overall risk can accrue if several instances are aggregated."},
+        {q:"In which of the following cases would an enterprise opt for a risk analysis based on qualitative techniques rather than quantitative risk techniques?", opts:["The established enterprise is evaluating the risk associated with developing a new company logo.","The enterprise wants an approximate measure of the magnitude of impact in financial terms.","The enterprise intends to rely primarily on external data in performing the risk analysis.","The enterprise is evaluating the risk associated with an established line of manufacturing."], correct:"A", justification:"When an existing enterprise decides to rebrand itself, it is taking a risk that the new branding will not be accepted by customers. Qualitative analysis is ideally suited to this case."},
+        {q:"Which of the following combinations of factors helps quantify risk?", opts:["Probability and consequence","Threat and impact","Threat and exposure","Sensitivity and exposure"], correct:"A", justification:"The quantification of risk is based on the probability (likelihood) of a threat exploiting a vulnerability resulting in a damaging consequence (impact) to an asset."},
+        {q:"Which of the following examples includes the required components of a risk calculation?", opts:["Over the next quarter, it is estimated that there is a 30 percent chance of two projects failing to meet a contract deadline, resulting in a US$500,000 fine related to breach of service level agreements.","Security experts believe that if a system is compromised, it will result in the loss of US$15 million in lost contracts.","The likelihood of disk corruption resulting from a single event of uncontrolled system power failure is estimated by engineers to be 15 percent.","The impact to security of a business line of a malware-related workstation event is estimated to be low."], correct:"A", justification:"The probability and impact of a specific event are required components of a risk calculation."},
+        {q:"The MOST likely trigger for conducting a comprehensive risk assessment is detection of changes in:", opts:["the asset inventory.","asset classification levels.","the business environment.","information security policies."], correct:"C", justification:"Changes in the business environment, including new threats, vulnerabilities, or changes to information asset deployment, will trigger comprehensive periodic risk assessment."},
+        {q:"The GREATEST benefit of using an IT risk register is that it is:", opts:["a list of potential events that have been identified to understand their impact.","a document used to track risk that has been identified, analyzed and prioritized.","a list of risk that can be shared with all stakeholders in an easy-to-read format.","the basis for choosing a commercial, off-the-shelf risk management tool."], correct:"B", justification:"The greatest benefit of a risk register is that it provides information about the likelihood, impact and prioritization of all identified IT risk."},
+        {q:"Which of the following BEST improves decision-making related to risk?", opts:["Maintaining a documented risk register of all possible risk","Risk awareness training in line with the risk culture","Maintaining updated security policies and procedures","Allocating accountability of risk to the department as a whole"], correct:"A", justification:"Maintaining a documented risk register improves decision-making related to risk response because a risk register captures the population of relevant risk scenarios and provides a basis for prioritization of risk responses."},
+        {q:"Where is the MOST useful place for enterprise management to store data related to a potential information breach?", opts:["Incident log","Problem management log","Risk register","Change management log"], correct:"C", justification:"The risk register captures all information related to exposure, including action plans, residual risk rating and relevant stakeholders."},
+        {q:"Which of the following BEST ensures effective prioritization and treatment of risk?", opts:["An updated risk register","A completed risk assessment report","Exception processes for low-impact risk","An updated risk map profile"], correct:"A", justification:"The risk register enables prioritization and treatment of risk as it gives a central view of all the enterprise's risk."},
+        {q:"Risk tolerance levels, risk ratings, related projects, affected stakeholders, assessment details and risk owners are all captured in which of the following items?", opts:["Risk register","Risk subject","Risk factors","Risk treatment plan"], correct:"A", justification:"A risk register includes risk tolerance levels, risk ratings, related projects, affected stakeholders, assessment details and risk owners."},
+        {q:"What is the BEST tool for documenting the status of risk mitigation and risk ownership at the enterprise level?", opts:["Risk action plans","Risk scenarios","Business impact analysis documents","Risk register"], correct:"D", justification:"A risk register is designed to document all risk identified for the enterprise. For each risk it records, at a minimum, the likelihood, potential impact, priority, status of mitigation and owner."},
+        {q:"Which of the following information in the risk register BEST helps in developing proper risk scenarios? A list of:", opts:["potential threats to assets.","residual risk on individual assets.","accepted risk.","security incidents."], correct:"A", justification:"Identifying potential threats to business assets will help isolate vulnerabilities and associated risk, all of which contribute to developing proper risk scenarios."},
+        {q:"An emerging risk should be added to the risk register by the risk practitioner when:", opts:["the impact of the risk can be quantified","the probability of occurrence is high.","a competitor has added the risk to its register.","the activity that triggers the risk initiates."], correct:"D", justification:"Risk identification usually starts when planning an activity, and risk identified at planning needs to be added to the risk register to ensure effective risk management."},
+        {q:"Which of the following BEST describes the information needed for each risk in a risk register?", opts:["Risk scenario including date, description, impact, probability, risk score, mitigation action and owner","Risk scenario including date, description, risk score, cost to remediate, communication plan and owner","Risk scenario including date, description, impact, cost to remediate and owner","Various activities leading to risk management planning"], correct:"A", justification:"Information required for each risk in a risk register includes date, description, impact, probability, risk score, mitigation action and owner."},
+        {q:"The risk register for a project should be PRIMARILY maintained until:", opts:["the project plan is approved.","management accepts the risk.","the project is closed.","the business case is approved."], correct:"C", justification:"Project risk will be relevant until the project is closed; therefore, the risk register should be maintained until that time."},
+        {q:"Risk may be removed from the risk register when the risk:", opts:["has been eliminated.","is transferred to the vendor.","threshold is exceeded.","is no longer relevant."], correct:"D", justification:"If a risk is relevant, it will be listed in the risk register. Once the risk is no longer relevant, it may be removed."},
+        {q:"Which of the following statements BEST describes the value of a risk register?", opts:["It captures the risk inventory.","It drives the risk response plan.","It is a risk reporting tool.","It lists internal risk and external risk."], correct:"B", justification:"Risk registers serve as the main reference for all risk-related information, supporting risk-related decisions such as risk response activities and their prioritization."},
+        {q:"If risk has been identified, but not yet mitigated, the enterprise would:", opts:["record and mitigate serious risk and disregard low-level risk.","obtain management commitment to mitigate all identified risk within a reasonable time frame.","document identified risk in the risk register and maintain the remediation status.","conduct an annual risk assessment, but disregard previous assessments to prevent risk bias."], correct:"C", justification:"All identified risk should be included in the risk register. The register should capture the proposed remediation plan, the risk owner, and the anticipated date of completion."},
+        {q:"To help establish the annual strategic direction of the enterprise, management needs to understand the existing IT challenges and assessment of risk. Where will management find this information?", opts:["The risk profile","A business case","The risk action plan","The risk register"], correct:"D", justification:"The results from the risk assessment are contained in the risk register. The risk register documents key attributes of potential and known IT risk issues."},
+        {q:"The PRIMARY advantage of creating and maintaining a risk register is to:", opts:["ensure that an inventory of identified risk is maintained.","record all risk scenarios considered during the risk identification process.","collect similar data on all risk identified within the enterprise.","run reports based on various risk scenarios."], correct:"A", justification:"Once assets and risk are identified, the risk register is used as an inventory of that risk. The risk register can accelerate risk decision-making and establish accountability for specific risk."},
+        {q:"Which of the following presents the GREATEST risk when updating the risk register? Updates are:", opts:["carried out jointly with other functions.","carried out following incidents.","carried out annually.","subject to approval by the chief information security officer."], correct:"C", justification:"Updating the risk register only annually means the risk register does not reflect the true status of IT risk in the enterprise."},
+        {q:"The preparation of a risk register begins in which risk management process?", opts:["Risk response planning","Risk monitoring and control","Risk management planning","Risk identification"], correct:"D", justification:"The risk register details all identified risk, including description, category, cause, probability of occurring, impact on objectives, proposed responses, owners and current status. The primary outputs of risk identification are the initial entries into the risk register."},
+        {q:"The risk register is PRIMARILY a document communicating risk to:", opts:["the public.","the employees.","regulatory bodies and compliance.","relevant stakeholders."], correct:"D", justification:"As it contains information regarding risk and weaknesses relevant to the enterprise, the risk register is shared only with relevant stakeholders."},
+        {q:"The MAIN reason an enterprise maintains a risk register is that it:", opts:["acts as a repository of identified risk for decision-making.","helps in benchmarking against the risk impacting industry peers.","improves the risk culture by communicating risk to all employees.","establishes the risk indicators that an enterprise can focus upon."], correct:"A", justification:"The risk register has the identified risk and is a repository that helps in decision-making."},
+        {q:"Which of the following is the BEST way to ensure that an accurate risk register is maintained over time?", opts:["Monitor key risk indicators and record the findings in the risk register.","Publish the risk register centrally with workflow features that periodically poll risk assessors.","Distribute the risk register to business process owners for review and updating.","Use audit personnel to perform regular audits and to maintain the risk register."], correct:"B", justification:"Centrally publishing the risk register and enabling periodic polling of risk assessors through workflow features will ensure accuracy of content."},
+        {q:"How can a risk professional calculate the total impact to operations if hard drives supporting a critical financial system fail?", opts:["Calculate the replacement cost for failed equipment and the time needed for service restoration.","Gather estimates from the finance department to determine the cost.","Use quantitative and qualitative methods to measure the cumulative effects on all business areas.","Review regulatory and contractual requirements to quantify liabilities."], correct:"C", justification:"An event in one department may affect many areas of the enterprise, and the impact on all areas should be included in the risk calculation. Using quantitative and qualitative methods will provide the information required to assess the effects of the failure."},
+        {q:"Which of the following is the MAIN outcome of a business impact analysis (BIA)?", opts:["Project prioritization","Criticality of business processes","The root cause of IT risk","Asset alignment with business processes"], correct:"B", justification:"A business impact analysis measures the total impact of tangible and intangible assets on business processes. Therefore, the sum of the value and opportunity lost plus the investment and time required to recover indicates the criticality of business processes."},
+        {q:"A business impact analysis is PRIMARILY used to:", opts:["estimate the resources required to resume normal operations after a disruption.","evaluate the impact of disruption on an enterprise's ability to operate over time.","calculate the likelihood and impact of known threats on specific functions.","evaluate high-level business requirements."], correct:"B", justification:"A business impact analysis (BIA) is primarily intended to evaluate the impact of disruption over time to an enterprise's ability to operate. It determines the urgency of each business activity."},
+        {q:"Which of the following objectives is the PRIMARY reason that risk professionals conduct risk assessments?", opts:["To maintain the enterprise's risk register","To enable management to choose the right risk response","To provide assurance on the risk management process","To identify risk with the highest business impact"], correct:"D", justification:"All decisions should be taken in the context of business impact. For each action to be taken, consideration ultimately must be given to its positive or negative impact on the business."},
+        {q:"Which of the following processes is MOST critical for prioritizing actions in a business continuity plan?", opts:["Risk assessment","Vulnerability assessment","Business impact analysis","Business process mapping"], correct:"C", justification:"The business impact analysis is the most critical process for deciding which part of the information system/business process should be given priority in case of a security incident that may lead to business disruption."},
+        {q:"Which of the following is the BEST method to analyze risk, incidents and related interdependencies to determine the impact on enterprise goals?", opts:["Security information and event management solutions","A business impact analysis","Enterprise risk management steering committee meetings","Interviews with business leaders to develop a risk profile"], correct:"B", justification:"A business impact analysis should include the examination of risk, incidents and interdependencies to identify consequences for business objectives."},
+        {q:"When performing a risk assessment on the impact of losing a server, calculating the monetary value of the server should be based on the:", opts:["cost to obtain a replacement.","annual loss expectancy.","cost of the software stored.","original cost to acquire."], correct:"A", justification:"The value of the server should be based on its replacement cost; however, the financial impact to the enterprise may be much broader, based on the function that the server performs and the value it brings to the enterprise."},
+        {q:"The GREATEST advantage in performing a business impact analysis is that it:", opts:["does not have to be updated because the impact will not change.","promotes continuity awareness in the enterprise.","requires only qualitative estimates.","eliminates the need for risk analysis."], correct:"B", justification:"A BIA raises enterprise-wide awareness of risk to business recovery and continuity."},
+        {q:"Which of the following BEST describes the objective of a business impact analysis?", opts:["The identification of threats, risk and vulnerabilities that can adversely affect the enterprise","The development of procedures for initial response and stabilization during an emergency","The identification of time-sensitive critical business functions and interdependencies","The development of communication procedures in case of a crisis"], correct:"C", justification:"Identification of time-sensitive critical business functions and interdependencies is a deliverable of the business impact analysis (BIA); the BIA includes metrics like recovery-time objectives and recovery-point objectives."},
+        {q:"Which of the following is MOST useful in developing a series of recovery time objectives?", opts:["Regression analysis","Risk analysis","Gap analysis","Business impact analysis"], correct:"D", justification:"Recovery time objectives (RTOs) are a primary deliverable of a BIA. RTOs relate to the financial impact of system downtime."},
+        {q:"A database administrator notices that the externally hosted, web-based corporate address book application requires users to authenticate but that the traffic between the application and users is not encrypted. The MOST appropriate course of action is to:", opts:["notify the business owner and the security manager of the discovery and propose an addition to the risk register.","contact the application administrators and request that they enable encryption of the application's web traffic.","alert all staff about the vulnerability and advise them not to log on from public networks.","accept that current controls are suitable for nonsensitive business data."], correct:"A", justification:"The business owner and security manager should be notified and the risk should be documented on the operational or security risk register to enable appropriate risk treatment."},
+        {q:"Which of the following types of risk is high for projects that affect multiple business areas?", opts:["Control risk","Inherent risk","Compliance risk","Residual risk"], correct:"B", justification:"Inherent risk normally grows as the number of users and business areas that may be affected increases. Inherent risk reflects risk or exposure without accounting for mitigating action by management."},
+        {q:"An enterprise decided not to implement any countermeasures or controls for a particular risk scenario. In this case, which of the following BEST represents the risk that is accepted by the enterprise?", opts:["Control risk","Detection risk","Inherent risk","Residual risk"], correct:"C", justification:"Without implementing any countermeasures, the management accepts the inherent risk."},
+        {q:"Acceptable risk for an enterprise is achieved when:", opts:["transferred risk is minimized.","control risk is minimized.","inherent risk is minimized.","residual risk is within tolerance levels."], correct:"D", justification:"Residual risk is the risk that remains after all controls have been applied; therefore, acceptable risk is achieved when residual risk is aligned with the enterprise risk appetite."},
+        {q:"Which of the following is the PRIMARY objective of a risk management program?", opts:["Maintain residual risk at an acceptable level","Implement preventive controls for every threat","Remove all identified risk","Reduce inherent risk to zero"], correct:"A", justification:"Ensuring that all residual risk is maintained at a level acceptable to the business is the objective of a risk management program."},
+        {q:"During a risk management exercise, an analysis was conducted on the identified risk and mitigations were identified. Which choice BEST reflects residual risk?", opts:["Risk remaining after the implementation of new or enhanced controls","Risk mitigated as a result of the implementation of new or enhanced controls","Risk identified prior to implementation of new or enhanced controls","Risk classified as high after the implementation of new or enhanced controls"], correct:"A", justification:"The classic definition of residual risk is any risk that remains after implementing a risk response, which is typically a control."},
+        {q:"The PRIMARY reason to verify the completion of a risk mitigation response is to:", opts:["confirm that residual risk is within acceptable thresholds.","verify that vulnerabilities are no longer exploitable.","maintain an accurate risk profile and inventory.","manage and report on the status of risk action plans."], correct:"A", justification:"The primary reason to verify the completion of the risk mitigation response is to confirm that residual risk is within acceptable thresholds or to plan for further action if it is not."},
+        {q:"Which of the following factors determines the acceptable level of residual risk in an enterprise?", opts:["Management discretion","Regulatory requirements","Risk assessment results","Internal audit findings"], correct:"A", justification:"Deciding what level of risk is acceptable to an enterprise is fundamentally a function of management. At its discretion, enterprise management may decide to accept risk."},
+        {q:"Which of the following BEST indicates a successful risk management practice?", opts:["Control risk is tied to business units.","Overall risk is quantified.","Residual risk is minimized.","Inherent risk is eliminated."], correct:"C", justification:"A successful risk management practice minimizes the residual risk to the enterprise to acceptable levels."},
+        {q:"An enterprise has decided to perform backups on a weekly basis. Which of the following choices BEST describes the risk response approach used by management?", opts:["Any residual risk from performing weekly backups has been accepted.","The risk of losing data has been mitigated to as low a level as possible.","The control is ineffective because any loss of data should be minimized.","The inherent risk of losing data has not been adequately mitigated."], correct:"A", justification:"Residual risk arises where there is a risk response or control in place, but the potential for loss is still probable. There is a risk of data loss, but management tolerance for risk is such that it is willing to accept that loss."},
+        {q:"Which of the following BEST helps identify information systems control deficiencies?", opts:["Gap analysis","The current IT risk profile","The IT controls framework","Countermeasure analysis"], correct:"A", justification:"Controls are deployed to achieve control objectives based on risk assessments and business requirements. The gap between desired control objectives and actual control design and operational effectiveness identifies control deficiencies in information systems."},
+        {q:"An enterprise learns of a security breach at another entity using similar network technology. The MOST important action for a risk practitioner is to:", opts:["assess the likelihood of the incident occurring at the risk practitioner's enterprise.","discontinue the use of the vulnerable technology.","report to senior management that the enterprise is not affected.","remind staff that no similar security breaches have taken place."], correct:"A", justification:"The likelihood of a similar incident occurring at the risk practitioner's enterprise should be assessed first, based on available information."},
+        {q:"A lack of adequate controls represents:", opts:["an impact.","a risk indicator.","a vulnerability.","a threat."], correct:"C", justification:"The lack of adequate controls represents a vulnerability, exposing sensitive processes and/or data to the possibility of malicious damage, attack, or unauthorized access by hackers."},
+        {q:"A risk professional has been asked to determine which factors were responsible for a loss event. Which of the following methods should be used?", opts:["Key risk indicators","Cause-and-effect analysis","Business process modeling","Business impact analysis"], correct:"B", justification:"Cause-and-effect analysis is a predictive or diagnostic analytical tool used to explore the root causes or factors that contribute to positive or negative effects or outcomes."},
+        {q:"Which of the following vulnerabilities is the MOST serious and allows attackers to access data through a web application?", opts:["Validation checks are missing in data input fields.","Password rules do not enforce sufficient complexity.","Application transaction log management is weak.","The application and database share a single access ID."], correct:"A", justification:"When validation checks are missing in data input fields, attackers are able to exploit other weaknesses in the system. For example, they can submit part of a structured query language (SQL) statement (SQL injection attack) to retrieve application data illegally."},
+        {q:"A small start-up software development company has been flooded and insurance does not pay because the premium has lapsed. In relation to risk management, the lapsed premium is considered a:", opts:["risk.","vulnerability.","threat.","negligence."], correct:"B", justification:"A lapsed insurance premium describes a vulnerability. A vulnerability is a weakness in the design, implementation, operation or internal control of a process that could expose the enterprise to a threat condition or actor."},
+        {q:"According to good practices, which of the following is PRIMARILY used to detect vulnerabilities in Internet-facing systems?", opts:["Penetration testing","Intrusion prevention systems","Antivirus systems","Spam filtering systems"], correct:"A", justification:"A penetration test simulates the actions of real attackers to test security defenses and detect vulnerabilities."},
+        {q:"After a security incident, which of the following techniques associated with risk analysis would be the FIRST step toward yielding an actionable plan that will effectively mitigate the risk?", opts:["Cost-benefit analysis","Gap analysis","Root cause analysis","Impact analysis"], correct:"C", justification:"Root cause analysis is used to determine the actual cause of the event, which is typically different from what initially appears to be responsible. Identifying a root cause allows an enterprise to address the cause rather than a symptom."},
+        {q:"Risk and control analysis results are reviewed to:", opts:["determine the current risk profile.","assess risk response options.","determine the current control environment.","assess gaps between current and desired states."], correct:"D", justification:"Assessing gaps between current and desired states is the function of the risk and control analysis."},
+        {q:"When assessing the performance of a critical application server, the MOST reliable assessment results may be obtained from:", opts:["activation of native database auditing.","documentation of performance objectives.","continuous monitoring.","documentation of security modules."], correct:"C", justification:"With continuous monitoring it is possible to track key performance metrics and also possible to address critical issues with minimum impact."},
+        {q:"Which of the following is MOST likely to be addressed by risk response?", opts:["Destruction of obsolete computer equipment","Theft of a smartphone from an office","Sanitization and reuse of a flash drive","Employee deletion of a file"], correct:"B", justification:"Theft of a smartphone is an example of a risk that should be addressed by an appropriate response."},
+        {q:"A procurement employee notices that new printer models offered by the vendor keep a copy of all printed documents on an internal hard disk. Considering the risk of unintentionally disclosing confidential data, the employee should:", opts:["proceed with the order and configure printers to automatically wipe all data on disks after each print job.","notify the security manager to conduct a risk assessment for the new equipment.","seek another vendor that offers printers without built-in hard disk drives.","procure printers with built-in hard disks and notify staff to wipe hard disks when decommissioning the printer."], correct:"B", justification:"Risk assessment is most appropriate because it yields risk mitigation techniques that are appropriate for enterprise risk context and appetite."},
+        {q:"Because of its importance to the business, an enterprise wants to quickly implement a technical solution that deviates from the company's policies. The risk practitioner should:", opts:["recommend against implementation because it violates the company's policies.","recommend revision of the current policy.","conduct a risk assessment and allow or disallow based on the outcome.","recommend a risk assessment and subsequent implementation only if residual risk is accepted."], correct:"D", justification:"A risk assessment should be conducted to clarify the risk whenever the enterprise's policies cannot be followed. The solution should be implemented only if the related risk is formally accepted by the enterprise."},
+        {q:"What is the MAIN objective of risk identification?", opts:["To detect possible threats that may affect the business","To ensure that risk factors and root causes are managed","To enable the review of the key performance indicators","To provide qualitative impact values to stakeholders"], correct:"A", justification:"Risk identification is the process of determining and documenting the risk that an enterprise faces. The identification of risk is based on the recognition of threats, vulnerabilities, assets and controls in the enterprise's operational environment."},
+        {q:"Which of the following triggers performance of an internal ad hoc risk assessment before the annual occurrence?", opts:["A new chief information officer is hired.","Senior management adjusts risk appetite.","Risk changes on a frequent basis.","A new system is introduced into the environment."], correct:"D", justification:"Introduction of new systems adds to overall risk of business objectives. The level of new or added risk should be determined via an ad hoc risk assessment."},
+        {q:"An information security trade journal publishes information about potential cybercriminal activity and targeted enterprises. A risk practitioner's company is on the list of targets. What is the FIRST action the risk practitioner should take after making the discovery?", opts:["Advise IT management about the threat.","Inform all employees about the threat.","Contact law enforcement officials about the threat.","Inform senior managers about the threat."], correct:"D", justification:"All senior managers need to be aware of the threat, so they can be prepared if an incident takes place."},
+        {q:"The FIRST step in identifying and assessing IT risk is to:", opts:["confirm the risk tolerance level of the enterprise.","identify threats and vulnerabilities.","gather information on the current and future environment.","review past incident reports and response activity."], correct:"C", justification:"The first step in any risk assessment is to gather information about the current state and pending internal and external changes to the enterprise's environment (scope, technology, incidents, modifications, etc.)."},
+        {q:"When a start-up company becomes popular, it suddenly is the target of hackers. This is considered:", opts:["an emerging vulnerability.","a vulnerability event.","an emerging threat.","an environmental risk factor."], correct:"C", justification:"A threat is any event in which an asset is exposed to a threat condition or action that has the potential to directly result in harm."},
+        {q:"Which of the following is the MOST important reason for conducting periodic risk assessments?", opts:["Risk assessments are not always precise.","Reviewers can optimize and reduce the cost of controls.","Risk assessments demonstrate the value of risk management to senior management.","Business risk is subject to frequent change."], correct:"D", justification:"Risk is constantly changing, so a previously conducted risk assessment may not include measured risk introduced since the last assessment."},
+        {q:"When would a risk professional ideally perform a complete enterprise-wide threat analysis?", opts:["On a yearly basis","When malware is detected","When regulatory requirements change","Following a security incident"], correct:"A", justification:"A complete threat analysis would be performed on a yearly basis; it could be broken down into monthly or quarterly increments, if desired."},
+        {q:"When developing risk scenarios for an enterprise, which of the following is the BEST approach?", opts:["The top-down approach to consider overall business impact","The top-down approach because it has the support of senior management","The bottom-up approach to understand the impact of system outages more accurately","The top-down and the bottom-up approach because they have different perspectives"], correct:"D", justification:"Top-down and bottom-up risk scenario development integrates both perspectives. A combined approach affords the best of both."},
+        {q:"Which of the following uses risk scenarios when estimating the likelihood and impact of significant risk to the enterprise?", opts:["An IT audit","A security gap analysis","A threat and vulnerability assessment","An IT security assessment"], correct:"C", justification:"A threat and vulnerability assessment typically evaluates all elements of a business process for threats and vulnerabilities and identifies the likelihood of occurrence and the business impact if the threats were realized."},
+        {q:"Which of the following BEST estimates the likelihood of significant events affecting an enterprise?", opts:["Threat analysis","Cost-benefit analysis","Scenario analysis","Countermeasure analysis"], correct:"C", justification:"Scenario analysis, along with vulnerability analysis, best determines whether a particular risk is relevant to the enterprise, and helps estimate the likelihood that significant events will affect the enterprise."},
+        {q:"Which of the following BEST addresses the potential for bias in developing risk scenarios?", opts:["Using representative and significant historical data","Securing participation of a large team of functional experts","Establishing a clearly defined escalation process","Integrating quantitative risk analysis techniques"], correct:"A", justification:"Using representative and significantly broad historical data helps to avoid bias that may otherwise characterize the selection of data by individual functional experts."},
+        {q:"Which of the following is MOST effective in assessing business risk?", opts:["A use case analysis","A business case analysis","Risk scenarios","A risk plan"], correct:"C", justification:"Risk scenarios are the most effective technique in assessing business risk. Scenarios help determine the likelihood and impact of an identified risk."},
+        {q:"Risk scenarios enable the risk assessment process because they:", opts:["cover a wide range of potential risk.","minimize the need for quantitative risk analysis techniques.","segregate IT risk from business risk for easier risk analysis.","help estimate the frequency and impact of risk."], correct:"D", justification:"While risk scenarios may address a wide range of risk, risk scenarios help to estimate the frequency and impact of risk—two key elements of the risk assessment process."},
+        {q:"Risk scenarios should be created PRIMARILY based on which of the following?", opts:["Input from senior management","Previous security incidents","Threats that the enterprise faces","Results of the risk analysis"], correct:"C", justification:"When creating risk scenarios, the most important factor to consider is the likelihood of threats or threat actions occurring due to the risk."},
+        {q:"When developing IT-related risk scenarios with a top-down approach, it is MOST important to identify the:", opts:["information system environment.","business objectives.","hypothetical risk scenarios.","internal and external risk scenarios."], correct:"B", justification:"Typically, top-down risk scenario development is performed by identifying business objectives and recognizing risk scenarios with the greatest potential to jeopardize business objectives."},
+        {q:"Which of the following approaches results in risk scenarios applicable to an enterprise's identified risk?", opts:["A bottom-up approach based on generic scenarios","A bottom-up approach emphasizing threat events","A top-down approach based on magnitude of loss","A top-down approach driven by business objectives"], correct:"D", justification:"A top-down approach ensures that an enterprise's unique perspectives and business objectives are prioritized in risk scenarios."},
+        {q:"Which is the FIRST step in identifying IT risk scenarios?", opts:["Estimate IT risk.","Estimate remediation costs.","Identify risk factors.","Identify the enterprise's risk appetite."], correct:"C", justification:"Identifying risk factors involves data collection necessary in creating risk scenarios. It is the first step in identifying such scenarios."},
+        {q:"Which of the following MOST affects a risk scenario?", opts:["A threat type","An event","An asset","An actor"], correct:"D", justification:"Someone needs to exploit the vulnerability."},
+        {q:"The organizational structure, policies, standards, technology, architecture and controls criteria are PRIMARILY used to:", opts:["develop risk reporting.","analyze risk scenarios.","perform risk analysis.","determine risk appetite."], correct:"B", justification:"The organizational structure, policies, standards, technology, architecture and controls are the criteria used when analyzing risk scenarios."},
+        {q:"Which of the following statements is a risk scenario?", opts:["The password for the configuration of the tape backup system is set to the vendor default.","A program that processes records does not include data input validation.","Dedicated capacity for processing on an enterprise system exceeds projected maximum usage, resulting in wasted infrastructure resources.","Attackers develop a new piece of malware based on a known, but patched, vulnerability."], correct:"C", justification:"Dedicated processing capacity that exceeds projected maximum usage and therefore results in wasted infrastructure resources constitutes potential loss."},
+        {q:"Which of the following factors should be assessed after the likelihood of a loss event has been determined?", opts:["Risk tolerance","Magnitude of impact","Residual risk","Compensating controls"], correct:"B", justification:"Once likelihood has been determined, the next step is to determine magnitude of impact."},
+        {q:"An enterprise assessed risk by identifying the potential methods of attack, vulnerabilities, motivations and skill of the attacker, and possible damage. What approach to risk scenario development was used?", opts:["Vulnerability-based","Asset/impact","Business impact analysis","Threat-based"], correct:"D", justification:"A threat-based approach to risk assessment identifies potential methods of attack, vulnerabilities that could be exploited, intent and skill of the attacker, and potential damage."}
+    ];
+
+    const fullQAData = [...qaData];
+    const totalQuestions = fullQAData.length;
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answered = false;
+    let quizCompleted = false;
+
+    const letters = ['A', 'B', 'C', 'D'];
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function renderQuestion() {
+        const container = document.getElementById('questionsRoot');
+        const progressText = document.getElementById('progressText');
+        const scoreText = document.getElementById('scoreText');
+        const progressFill = document.getElementById('progressFill');
+        const nextBtn = document.getElementById('nextBtn');
+        const restartBtn = document.getElementById('restartBtn');
+
+        if (quizCompleted) {
+            showFinalResult();
+            return;
+        }
+
+        answered = false;
+        nextBtn.disabled = true;
+        nextBtn.textContent = 'Next →';
+        nextBtn.className = 'next-btn';
+
+        const qa = fullQAData[currentQuestionIndex];
+
+        progressText.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+        scoreText.textContent = `Score: ${score}`;
+        progressFill.style.width = `${((currentQuestionIndex) / totalQuestions) * 100}%`;
+
+        const optionsHtml = qa.opts.map((opt, i) => `
+            <li class="option-item" data-answer="${letters[i]}">
+                <span class="option-letter">${letters[i]}</span>
+                <span class="option-text">${escapeHtml(opt)}</span>
+                <span class="option-status"></span>
+            </li>
+        `).join('');
+
+        container.innerHTML = `
+            <div class="question-block">
+                <div class="q-meta">Q${currentQuestionIndex + 1}</div>
+                <div class="question-text">${escapeHtml(qa.q)}</div>
+                <ul class="options-list">${optionsHtml}</ul>
+                <div id="answerBox" style="display:none;">
+                    <div class="answer-result" id="answerResult"></div>
+                    <div class="explanation-box">
+                        <div class="explanation-title">📖 EXPLANATION</div>
+                        <div class="explanation-text">${escapeHtml(qa.justification)}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.querySelectorAll('.option-item').forEach(option => {
+            option.addEventListener('click', function() {
+                selectAnswer(this);
+            });
+        });
+    }
+
+    function selectAnswer(selectedOption) {
+        if (answered) return;
+
+        answered = true;
+
+        const selectedAnswer = selectedOption.getAttribute('data-answer');
+        const qa = fullQAData[currentQuestionIndex];
+        const correctAnswer = qa.correct;
+
+        const answerBox = document.getElementById('answerBox');
+        const answerResult = document.getElementById('answerResult');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (selectedAnswer === correctAnswer) {
+            score++;
+            selectedOption.classList.add('selected-correct');
+            answerResult.className = 'answer-result correct';
+            answerResult.innerHTML = `✓ Correct! Answer is: ${correctAnswer}`;
+        } else {
+            selectedOption.classList.add('selected-wrong');
+            answerResult.className = 'answer-result wrong';
+            answerResult.innerHTML = `✗ Wrong. Correct Answer is: ${correctAnswer}`;
+            
+            document.querySelectorAll('.option-item').forEach(option => {
+                if (option.getAttribute('data-answer') === correctAnswer) {
+                    option.classList.add('correct-answer');
+                }
+            });
+        }
+
+        document.getElementById('scoreText').textContent = `Score: ${score}`;
+        answerBox.style.display = 'block';
+        nextBtn.disabled = false;
+
+        // Add disabled class to all options
+        document.querySelectorAll('.option-item').forEach(opt => {
+            opt.classList.add('disabled');
+        });
+
+        if (currentQuestionIndex === totalQuestions - 1) {
+            nextBtn.textContent = 'Finish Quiz';
+        }
+    }
+
+    function nextQuestion() {
+        if (currentQuestionIndex < totalQuestions - 1) {
+            currentQuestionIndex++;
+            renderQuestion();
+        } else {
+            quizCompleted = true;
+            renderQuestion();
+        }
+    }
+
+    function showFinalResult() {
+        const container = document.getElementById('questionsRoot');
+        const progressText = document.getElementById('progressText');
+        const scoreText = document.getElementById('scoreText');
+        const progressFill = document.getElementById('progressFill');
+        const nextBtn = document.getElementById('nextBtn');
+        const restartBtn = document.getElementById('restartBtn');
+
+        const percentage = Math.round((score / totalQuestions) * 100);
+
+        progressText.textContent = '🎯 Quiz Completed!';
+        scoreText.textContent = `Final Score: ${score}/${totalQuestions}`;
+        progressFill.style.width = '100%';
+
+        let resultMessage = '';
+        let emoji = '';
+
+        if (percentage >= 90) {
+            emoji = '🌟';
+            resultMessage = 'Excellent risk assessment knowledge! Outstanding performance!';
+        } else if (percentage >= 75) {
+            emoji = '👏';
+            resultMessage = 'Good result. Review the incorrect answers to strengthen your knowledge.';
+        } else if (percentage >= 60) {
+            emoji = '📚';
+            resultMessage = 'Fair result. More revision is recommended. Focus on the areas you missed.';
+        } else {
+            emoji = '💪';
+            resultMessage = 'Needs improvement. Please review the full question set again and retry.';
+        }
+
+        container.innerHTML = `
+            <div class="final-result">
+                <h2>${emoji} Quiz Completed!</h2>
+                <div class="final-score">${score} / ${totalQuestions}</div>
+                <p><strong>Percentage:</strong> ${percentage}%</p>
+                <p>${resultMessage}</p>
+            </div>
+        `;
+
+        nextBtn.style.display = 'none';
+        restartBtn.style.display = 'inline-block';
+    }
+
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        answered = false;
+        quizCompleted = false;
+
+        const nextBtn = document.getElementById('nextBtn');
+        const restartBtn = document.getElementById('restartBtn');
+
+        nextBtn.style.display = 'inline-block';
+        nextBtn.textContent = 'Next →';
+        nextBtn.className = 'next-btn';
+        restartBtn.style.display = 'none';
+
+        renderQuestion();
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+        document.getElementById('restartBtn').addEventListener('click', restartQuiz);
+        renderQuestion();
+    });
+</script>
+</body>
+</html>

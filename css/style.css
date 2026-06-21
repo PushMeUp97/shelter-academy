@@ -1,0 +1,369 @@
+/* ==========================================================================
+   1. SYSTEM DESIGN VARIABLES & RESET
+   ========================================================================== */
+:root {
+    --primary-color: #0f172a;       /* Corporate Slate/Navy Base */
+    --secondary-color: #1e293b;     /* Structural Container Tones */
+    --accent-color: #2563eb;        /* Professional Security Blue */
+    --accent-hover: #1d4ed8;        /* High Contrast Interaction Blue */
+    --text-main: #f8fafc;           /* Light Contrast Background Text */
+    --text-dark: #334155;           /* Heavy Typography Fill */
+    --text-muted: #94a3b8;          /* Subheading Gray Tint */
+    --bg-light: #f8fafc;            /* Page Background Fill */
+    --bg-card: #ffffff;             /* Crisp Section Separation White */
+    
+    --max-width: 1200px;
+    --border-radius: 8px;
+    --transition-fast: 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ==========================================================================
+   2. GLASSMORPHISM NAVIGATION HEADER
+   ========================================================================== */
+.site-header {
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color var(--transition-fast);
+}
+
+.nav-link:hover, .nav-item.active .nav-link {
+    color: var(--text-main);
+}
+
+/* Dropdown State Definitions */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--secondary-color);
+    min-width: 250px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all var(--transition-fast);
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--accent-color);
+    color: var(--text-main);
+    padding-left: 1.5rem;
+}
+
+/* ==========================================================================
+   3. LANDING PAGE HERO & CARD LAYOUTS
+   ========================================================================== */
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--text-main);
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-main);
+    padding: 0.75rem 1.7rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: background-color var(--transition-fast);
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.home-intro {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.home-intro h2 { font-size: 2rem; color: var(--primary-color); }
+.subtitle { color: #64748b; font-size: 1.1rem; margin-top: 0.5rem; }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    transition: transform var(--transition-fast);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 { margin-bottom: 1rem; color: var(--primary-color); }
+.card p { color: #475569; font-size: 0.95rem; margin-bottom: 1.5rem; }
+.card-link { color: var(--accent-color); font-weight: 600; }
+
+/* ==========================================================================
+   4. ACADEMY MULTI-COLUMN CONTENT LAYOUT
+   ========================================================================== */
+.academy-layout {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+    min-height: 70vh;
+}
+
+.academy-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.academy-sidebar h3 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    color: #64748b;
+}
+
+.academy-sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.academy-sidebar a {
+    display: block;
+    padding: 0.6rem 1rem;
+    border-radius: var(--border-radius);
+    color: #475569;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.academy-sidebar a:hover, .academy-sidebar a.active {
+    background-color: #e2e8f0;
+    color: var(--primary-color);
+}
+
+.academy-sidebar a.active {
+    font-weight: 600;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.academy-main-content {
+    flex-grow: 1;
+    max-width: 800px;
+}
+
+.academy-main-content h1 { font-size: 2.4rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+.lead { font-size: 1.2rem; color: #475569; margin-bottom: 1rem; }
+.academy-main-content h2 { font-size: 1.6rem; color: var(--primary-color); margin-top: 2rem; margin-bottom: 1rem; }
+.academy-main-content h3 { font-size: 1.2rem; color: var(--secondary-color); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.academy-main-content p { margin-bottom: 1.2rem; color: #334155; text-align: justify; }
+.academy-main-content ul { margin-left: 1.5rem; margin-bottom: 1.5rem; list-style-type: square; }
+.academy-main-content li { margin-bottom: 0.5rem; color: #334155; }
+
+blockquote {
+    background-color: #f1f5f9;
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background-color: var(--bg-card);
+}
+
+.data-table th, .data-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+
+.data-table th { background-color: #f1f5f9; color: var(--primary-color); }
+
+.code-box {
+    background-color: var(--primary-color);
+    color: #e2e8f0;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    white-space: pre-line;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   5. ABOUT PAGE AND GLOBAL FOOTER
+   ========================================================================== */
+.about-section { max-width: 800px; margin: 0 auto; padding-top: 2rem; }
+.about-section h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+.about-lead { font-size: 1.3rem; color: #475569; margin-bottom: 2rem; }
+.about-content-block h2 { margin-top: 2rem; margin-bottom: 1rem; }
+
+.site-footer {
+    background-color: var(--primary-color);
+    color: var(--text-muted);
+    padding: 3rem 2rem 1.5rem 2rem;
+    margin-top: 6rem;
+    border-top: 4px solid var(--accent-color);
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand { max-width: 400px; }
+.footer-brand h3 { color: var(--text-main); margin-bottom: 1rem; }
+.footer-links h4 { color: var(--text-main); margin-bottom: 1rem; }
+.footer-links ul { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links a:hover { color: var(--text-main); }
+.footer-bottom { max-width: var(--max-width); margin: 0 auto; padding-top: 1.5rem; text-align: center; font-size: 0.85rem; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-menu { display: none; } /* Standard collapse placeholder for simplicity */
+    .academy-layout { flex-direction: column; }
+    .academy-sidebar { width: 100%; }
+    .academy-sidebar ul { position: relative; top: 0; flex-direction: row; flex-wrap: wrap; }
+}
