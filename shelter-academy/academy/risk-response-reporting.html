@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOD-03 · Risk Response & Reporting — Shelter Academy</title>
+  <meta name="description" content="What to do the moment something goes wrong: response strategies, escalation paths, and writing a report that holds up.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark">SA</span>
+        <span class="brand-text">Shelter<br>Academy</span>
+      </a>
+      <nav class="site-nav" id="siteNav">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li class="has-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false" aria-controls="academyMenu">
+              Academy <span class="caret">▾</span>
+            </button>
+            <ul class="dropdown-menu" id="academyMenu">
+              <li><a href="governance.html"><span class="mod-code">MOD-01</span> Governance</a></li>
+              <li><a href="risk-assessment.html"><span class="mod-code">MOD-02</span> Risk Assessment</a></li>
+              <li><a href="risk-response-reporting.html"><span class="mod-code">MOD-03</span> Risk Response &amp; Reporting</a></li>
+              <li><a href="technology-security.html"><span class="mod-code">MOD-04</span> Technology &amp; Security</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-header">
+      <div class="container">
+        <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#modules">Academy</a> / Risk Response &amp; Reporting</p>
+        <span class="file-stamp">MOD-03 · RISK RESPONSE &amp; REPORTING</span>
+        <h1>Risk Response &amp; Reporting</h1>
+        <p class="hero-lede" style="margin-bottom:18px;">What to do the moment something goes wrong, who gets told, and how it gets written down.</p>
+        <div class="page-meta">
+          <span>⏱ ~24 min read</span>
+          <span>📋 Includes a self-check checklist</span>
+          <span>🎯 For all staff and volunteers</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="container module-layout">
+      <aside class="module-toc">
+        <span class="eyebrow">In this file</span>
+        <ul>
+          <li><a href="#strategies">Four response strategies</a></li>
+          <li><a href="#workflow">The incident reporting workflow</a></li>
+          <li><a href="#chain">Who reports to whom, and when</a></li>
+          <li><a href="#writing">Writing a report that holds up</a></li>
+          <li><a href="#checklist">Self-check checklist</a></li>
+        </ul>
+      </aside>
+
+      <article class="module-content">
+
+        <section id="strategies">
+          <h2>Four response strategies</h2>
+          <p>Once a risk is identified — through the register in MOD-02 or in the moment — there are only four ways to respond to it. Naming which one you're choosing, and why, is what turns a reaction into a decision.</p>
+
+          <table class="data-table">
+            <caption>Choosing a response strategy</caption>
+            <thead>
+              <tr><th>Strategy</th><th>What it means</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Avoid</td><td>Stop doing the thing that creates the risk</td><td>Discontinuing an unsupervised activity that's caused repeated injuries</td></tr>
+              <tr><td>Mitigate</td><td>Reduce the likelihood or impact</td><td>Adding a second staff member to overnight shifts</td></tr>
+              <tr><td>Transfer</td><td>Shift the financial consequence elsewhere</td><td>Insurance, contracted security, indemnification clauses</td></tr>
+              <tr><td>Accept</td><td>Knowingly carry the risk because the cost of acting outweighs it</td><td>A low-likelihood, low-impact risk that's been reviewed and documented as acceptable</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <span class="label">The fifth option, which isn't an option</span>
+            <p>Ignoring a risk because it hasn't been formally accepted is different from accepting it. "Accept" requires a documented decision by someone with the authority to make it — usually the board for high-severity risks, per the roles table in MOD-01.</p>
+          </div>
+        </section>
+
+        <section id="workflow">
+          <h2>The incident reporting workflow</h2>
+          <p>An incident is anything that did happen, as opposed to a risk, which is something that could. The sequence matters more than any single step done perfectly.</p>
+          <ul class="bullet">
+            <li><strong>1. Immediate response.</strong> Address safety first — this is the only step that should happen before any documentation begins.</li>
+            <li><strong>2. Stabilize and contain.</strong> Make sure the situation isn't ongoing before stepping back to document it.</li>
+            <li><strong>3. Document while it's fresh.</strong> Write the initial report within hours, not days — memory degrades fast, especially under stress.</li>
+            <li><strong>4. Escalate per the reporting chain.</strong> Notify the right people at the right level — see the table below.</li>
+            <li><strong>5. Debrief.</strong> A short, blame-free review of what happened and whether the risk register or a policy needs to change.</li>
+          </ul>
+        </section>
+
+        <section id="chain">
+          <h2>Who reports to whom, and when</h2>
+          <p>Build this table for your own org chart — the version below is a reasonable starting structure for a small shelter.</p>
+
+          <table class="data-table">
+            <caption>Sample escalation chain</caption>
+            <thead>
+              <tr><th>Severity</th><th>Reports to</th><th>Timeline</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Minor (score 1–2, MOD-02 scale)</td><td>Shift supervisor</td><td>Same shift</td></tr>
+              <tr><td>Serious (score 3–4)</td><td>Executive director</td><td>Within 24 hours</td></tr>
+              <tr><td>Severe (score 6–9)</td><td>Board chair + ED</td><td>Immediately, by phone, followed by written report within 24 hours</td></tr>
+              <tr><td>Legally mandated (abuse, certain injuries)</td><td>Relevant authority, per mandatory reporting law</td><td>As required by law — do not wait for internal sign-off</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout risk">
+            <span class="label">On mandatory reporting</span>
+            <p>Where a legal mandatory-reporting duty applies, it overrides your internal chain — report to the authority first, then notify leadership. This module is reference material, not legal advice; confirm your jurisdiction's specific requirements with counsel.</p>
+          </div>
+        </section>
+
+        <section id="writing">
+          <h2>Writing a report that holds up</h2>
+          <p>A good incident report separates what was observed from what was inferred, and gives enough detail that someone who wasn't there could understand exactly what happened.</p>
+          <ul class="bullet">
+            <li><strong>Facts, not conclusions.</strong> "Client raised their voice and stepped toward staff" — not "client became aggressive."</li>
+            <li><strong>Times, not impressions.</strong> Specific timestamps wherever possible, not "early evening."</li>
+            <li><strong>Names and roles of everyone involved or present</strong>, including witnesses.</li>
+            <li><strong>Actions taken</strong>, in the order they happened, including who was notified and when.</li>
+            <li><strong>No speculation about cause</strong> unless it's clearly labeled as the writer's opinion, separate from the factual account.</li>
+          </ul>
+        </section>
+
+        <section id="checklist">
+          <h2>Self-check checklist</h2>
+          <div class="checklist">
+            <h3>Run this against your current incident process</h3>
+            <ul>
+              <li><input type="checkbox" id="i1"><label for="i1">Every staff member, including new volunteers, knows the first three steps of the workflow above.</label></li>
+              <li><input type="checkbox" id="i2"><label for="i2">A written escalation chain exists with names, not just titles.</label></li>
+              <li><input type="checkbox" id="i3"><label for="i3">Mandatory reporting obligations have been confirmed with legal counsel for your jurisdiction.</label></li>
+              <li><input type="checkbox" id="i4"><label for="i4">Incident reports are reviewed against the risk register at least quarterly.</label></li>
+              <li><input type="checkbox" id="i5"><label for="i5">Debriefs happen after every serious incident, not just severe ones.</label></li>
+            </ul>
+          </div>
+        </section>
+
+      </article>
+    </div>
+
+    <div class="container">
+      <div class="module-footer-nav">
+        <a href="risk-assessment.html" class="btn btn-ghost">← MOD-02 · Risk Assessment</a>
+        <a href="technology-security.html" class="next-module">
+          <span>
+            <span class="next-label">Next file</span>
+            <span class="next-title">MOD-04 · Technology &amp; Security</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand">
+            <span class="brand-mark">SA</span>
+            <span class="brand-text">Shelter<br>Academy</span>
+          </a>
+          <p>Practical governance and risk training for the people who run shelters — free, self-paced, no login required.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <ul>
+            <li><a href="governance.html">Governance</a></li>
+            <li><a href="risk-assessment.html">Risk Assessment</a></li>
+            <li><a href="risk-response-reporting.html">Risk Response &amp; Reporting</a></li>
+            <li><a href="technology-security.html">Technology &amp; Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span>© 2026 Shelter Academy</span>
+        <span>Training reference material — not a substitute for legal advice</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
